@@ -1,3 +1,6 @@
+# Credits
+Demo presented here [https://youtu.be/YXrb-DqsBNU?t=951](https://youtu.be/YXrb-DqsBNU?t=951) and adapted to a newer version of Zig
+
 # Install Zig
 ```sh
 wget https://ziglang.org/builds/zig-linux-x86_64-0.11.0-dev.2725+4374ce51b.tar.xz
