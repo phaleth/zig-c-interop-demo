@@ -8,7 +8,14 @@ pub fn build(b: *std.build.Builder) void {
         .target = target,
         .root_source_file = .{ .path = "src/foo.zig" }
     });
-    exe.addCSourceFile("src/bar.c", &.{"-std=c99"});
+    exe.addCSourceFile(.{
+        .file = .{ .cwd_relative = "src/bar.c" },
+        .flags = &[_][]const u8{
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+        }
+    });
     exe.linkLibC();
     
     b.installArtifact(exe);
