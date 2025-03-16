@@ -5,7 +5,7 @@ Demo presented here [https://youtu.be/YXrb-DqsBNU?t=951](https://youtu.be/YXrb-D
 # Install Zig
 
 ```sh
-wget https://ziglang.org/download/0.12.0/zig-linux-x86_64-0.12.0.tar.xz
+wget https://ziglang.org/download/0.14.0/zig-linux-x86_64-0.14.0.tar.xz
 
 tar xf zig-*.tar.xz
 
@@ -14,7 +14,7 @@ sudo rm -rf /opt/zig && sudo mv zig-*/ /opt/zig && rm zig-*.tar.xz
 nano .bashrc
 
 # Add following to the end of the file
-export PATH=$PATH:/opt/zig
+export PATH=/opt/zig:$PATH
 
 source .bashrc
 
@@ -37,18 +37,18 @@ Expected output
 
 ```sh
 sum: 18
-/opt/zig/lib/std/debug.zig:188:31: 0x1030872 in dumpCurrentStackTrace (foobar)
+/opt/zig/lib/std/debug.zig:315:31: 0x1047fd2 in dumpCurrentStackTrace (foobar)
         writeCurrentStackTrace(stderr, debug_info, io.tty.detectConfig(io.getStdErr()), start_addr) catch |err| {
                               ^
-/home/user/zig/zig-c-interop-demo/src/foo.zig:4:36: 0x103073f in dump_stack_trace (foobar)
+/home/user/zig/zig-c-interop-demo/src/foo.zig:4:36: 0x10eb842 in dump_stack_trace (foobar)
     std.debug.dumpCurrentStackTrace(null);
                                    ^
-src/bar.c:8:5: 0x1030699 in foo (/home/user/zig/zig-c-interop-demo/src/bar.c)
+src/bar.c:8:5: 0x103cb25 in foo (src/bar.c)
     dump_stack_trace();
     ^
-src/bar.c:17:3: 0x1030709 in main (/home/user/zig/zig-c-interop-demo/src/bar.c)
+src/bar.c:17:3: 0x103cb99 in main (src/bar.c)
   foo(argc > 1);
   ^
-???:?:?: 0x7f842065f249 in ??? (libc.so.6)
-Unwind information for `libc.so.6:0x7f842065f249` was not available, trace may be incomplete
+???:?:?: 0x7f6f44a25249 in ??? (libc.so.6)
+Unwind information for `libc.so.6:0x7f6f44a25249` was not available, trace may be incomplete
 ```
